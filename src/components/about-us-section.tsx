@@ -7,28 +7,28 @@ const teamMembers = [
     name: 'Mohammed Shahzad Anwar',
     role: 'Project Lead & Full-Stack Developer',
     bio: 'Passionate about creating impactful web solutions that help users.',
-    imageUrl: 'https://placehold.co/150x150.png',
+    imageUrl: '/images/shahzad.jpg',
     aiHint: 'male profile'
   },
   {
     name: 'Syed Yaseenuddin',
     role: 'Frontend Specialist & UI/UX Designer',
     bio: 'Focused on crafting intuitive and engaging user experiences.',
-    imageUrl: 'https://placehold.co/150x150.png',
+    imageUrl: '/images/yaseen.jpeg',
     aiHint: 'male designer'
   },
   {
     name: 'Mohammed Ali Khan',
     role: 'Backend Developer & AI Integration',
     bio: 'Expert in building robust backend systems and integrating AI features.',
-    imageUrl: 'https://placehold.co/150x150.png',
+    imageUrl: '/images/ali-khan.jpg',
     aiHint: 'male tech'
   },
   {
     name: 'Sohail Mohammed Ayan',
     role: 'QA & Content Strategist',
     bio: 'Ensuring quality and developing meaningful content for our users.',
-    imageUrl: 'https://placehold.co/150x150.png',
+    imageUrl: '/images/ayan.jpg',
     aiHint: 'male professional'
   },
 ];
