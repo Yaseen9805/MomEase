@@ -1,12 +1,15 @@
 
+"use client"; // Required for useState and useEffect
+
 import type { ReactNode } from 'react';
+import { useState, useEffect } from 'react';
 import {
   SidebarProvider,
   Sidebar,
   SidebarHeader,
   SidebarContent,
   SidebarInset,
-  SidebarFooter,
+  SidebarFooter, // Keep SidebarFooter import if it's used in ui/sidebar for structure
   SidebarTrigger,
 } from '@/components/ui/sidebar';
 import { SidebarNav } from './sidebar-nav';
@@ -16,12 +19,27 @@ import { Button } from '@/components/ui/button';
 import { LogOut } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { SplashScreen } from '../splash-screen'; // Import SplashScreen
 
 interface MainLayoutProps {
   children: ReactNode;
 }
 
 export function MainLayout({ children }: MainLayoutProps) {
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 2500); // Display splash for 2.5 seconds
+
+    return () => clearTimeout(timer); // Cleanup timer
+  }, []);
+
+  if (showSplash) {
+    return <SplashScreen />;
+  }
+
   return (
     <SidebarProvider defaultOpen={true} collapsible="icon">
       <Sidebar
@@ -38,9 +56,7 @@ export function MainLayout({ children }: MainLayoutProps) {
         )}
       >
         <SidebarHeader className="p-4 flex items-start justify-start">
-          {/* Desktop Sidebar Trigger, now on the left */}
           <SidebarTrigger className="hidden md:flex text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground mr-2" />
-          {/* This Link will only be visible on mobile when sidebar is open as a sheet */}
           <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity text-heading-color md:hidden">
             MomEase
           </Link>
@@ -55,16 +71,15 @@ export function MainLayout({ children }: MainLayoutProps) {
                 "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
                 "group-data-[state=collapsed]:w-auto group-data-[state=collapsed]:justify-center group-data-[state=collapsed]:p-2 group-data-[state=collapsed]:mx-auto" 
               )}
-              // onClick={() => console.log("Logout clicked")} // Placeholder for actual logout logic
             >
               <LogOut className="h-5 w-5 shrink-0" />
               <span className="group-data-[state=collapsed]:hidden">Logout</span>
             </Button>
           </div>
         </SidebarContent>
-        <SidebarFooter> 
-          {/* Footer is effectively empty here, its mt-auto pushes it to the bottom of the overall sidebar if SidebarContent wasn't flex-1 */}
-        </SidebarFooter>
+        {/* SidebarFooter is defined in ui/sidebar.tsx and has mt-auto there */}
+        {/* If you wanted a visual footer *always* at bottom, it would be here. */}
+        {/* The logout button is now part of SidebarContent's scrollable area. */}
       </Sidebar>
       <SidebarInset className="bg-transparent">
         <AppHeader />
@@ -75,4 +90,3 @@ export function MainLayout({ children }: MainLayoutProps) {
     </SidebarProvider>
   );
 }
-    
