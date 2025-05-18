@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -63,6 +64,11 @@
     --background: 330 20% 18%; 
     /* Middle color for dark gradient: approx darker #F0DFE8 */
 
+    /* Splash screen specific dark mode gradient variables */
+    --background-start-dark: 330 20% 18%; /* Darker Blush Pink */
+    --background-end-dark: 270 30% 22%;   /* Darker Lavender Purple */
+
+
     --foreground: 330 40% 88%;       /* Light Pinkish Lavender text */
     --heading-color: 325 70% 75%;     /* Brighter Pink #F092C8 */
 
@@ -123,6 +129,18 @@
     min-height: 100vh;
   }
   .dark body {
-    background-image: linear-gradient(to bottom, hsl(var(--background-start)), hsl(330 25% 20%), hsl(var(--background-end))); /* Dark gradient equivalent */
+    background-image: linear-gradient(to bottom, hsl(var(--background-start-dark)), hsl(330 25% 20%), hsl(var(--background-end-dark))); /* Dark gradient equivalent */
   }
 }
+
+/* Optional: Add a simple fadeIn animation if not using Tailwind's built-in transitions enough */
+/*
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-in-out;
+}
+*/
