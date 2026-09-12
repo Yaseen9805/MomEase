@@ -12,7 +12,11 @@
 
 A pregnancy and postpartum companion app built with Next.js — mood tracking, an AI chat companion, an AI-generated weekly pregnancy progress tracker, trimester-specific exercises, educational articles, a community forum, and a small shop, all in one calming, single-page-app-style dashboard.
 
-There's no backend/database yet: the app runs entirely client-side, with sample content shipped in-repo and per-browser state (cart, theme, mood entries) kept in `localStorage`. See [How it can be improved](#how-it-can-be-improved) for where a real backend would plug in.
+## Live Demo
+
+Deployed on [Vercel](https://vercel.com)'s free tier: **https://mom-ease-9805.vercel.app/**
+
+There's no backend/database yet: the app runs entirely client-side, with sample content shipped in-repo and per-browser state (cart, theme, mood entries) kept in `localStorage`. The AI features (mood support suggestions, weekly pregnancy updates, blog summaries) do call out to Google Gemini server-side, so those need a valid `GOOGLE_API_KEY` configured on the deployment. See [How it can be improved](#how-it-can-be-improved) for where a real backend would plug in.
 
 ## Features
 
