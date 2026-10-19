@@ -15,7 +15,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 import type { Mood, MoodEntry } from "@/types/mood";
 import { moodOptionsList } from "@/types/mood";
-import { containsCrisisLanguage } from "@/lib/crisis";
+import { useCrisisBanner } from "@/hooks/use-crisis-banner";
 import { CrisisBanner, CrisisDisclaimer } from "@/components/crisis-support";
 
 const moodTrackerSchema = z.object({
@@ -33,7 +33,7 @@ interface MoodTrackerFormProps {
 export function MoodTrackerForm({ onNewMoodEntry }: MoodTrackerFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [supportSuggestions, setSupportSuggestions] = useState<string | null>(null);
-  const [showCrisisBanner, setShowCrisisBanner] = useState(false);
+  const { showBanner: showCrisisBanner, checkText: checkCrisisText } = useCrisisBanner();
   const { toast } = useToast();
 
   const form = useForm<MoodTrackerFormValues>({
@@ -49,10 +49,7 @@ export function MoodTrackerForm({ onNewMoodEntry }: MoodTrackerFormProps) {
     setIsLoading(true);
     setSupportSuggestions(null);
 
-    const combinedText = `${data.symptoms} ${data.additionalContext ?? ""}`;
-    if (containsCrisisLanguage(combinedText)) {
-      setShowCrisisBanner(true);
-    }
+    checkCrisisText(`${data.symptoms} ${data.additionalContext ?? ""}`);
 
     onNewMoodEntry({
       mood: data.mood,

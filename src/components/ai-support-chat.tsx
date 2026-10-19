@@ -9,7 +9,7 @@ import { analyzeMoodAndProvideSupport, type MoodAnalysisInput, type MoodAnalysis
 import { useToast } from "@/hooks/use-toast";
 import { Send, Loader2, User, Bot } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { containsCrisisLanguage } from "@/lib/crisis";
+import { useCrisisBanner } from "@/hooks/use-crisis-banner";
 import { CrisisBanner, CrisisDisclaimer } from "@/components/crisis-support";
 
 interface Message {
@@ -23,7 +23,7 @@ export function AiSupportChat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [showCrisisBanner, setShowCrisisBanner] = useState(false);
+  const { showBanner: showCrisisBanner, checkText: checkCrisisText } = useCrisisBanner();
   const { toast } = useToast();
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
@@ -71,9 +71,7 @@ export function AiSupportChat() {
     setInputMessage("");
     setIsLoading(true);
 
-    if (containsCrisisLanguage(userMessage.text)) {
-      setShowCrisisBanner(true);
-    }
+    checkCrisisText(userMessage.text);
 
     try {
       const moodInput: MoodAnalysisInput = {

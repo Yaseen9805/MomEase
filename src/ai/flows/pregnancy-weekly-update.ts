@@ -7,7 +7,7 @@
  * - PregnancyWeeklyUpdateOutput - The return type for the function.
  */
 
-import {ai} from '@/ai/genkit';
+import {ai, requireOutput} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const PregnancyWeeklyUpdateInputSchema = z.object({
@@ -54,9 +54,6 @@ const pregnancyWeeklyUpdateFlow = ai.defineFlow(
   },
   async input => {
     const {output} = await prompt(input);
-    if (!output) {
-        throw new Error("Failed to generate pregnancy update from AI.");
-    }
-    return output;
+    return requireOutput(output, "Failed to generate pregnancy update from AI.");
   }
 );

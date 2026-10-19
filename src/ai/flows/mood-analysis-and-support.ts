@@ -11,7 +11,7 @@
  * @exports MoodAnalysisOutput - The return type for the analyzeMoodAndProvideSupport function.
  */
 
-import {ai} from '@/ai/genkit';
+import {ai, requireOutput} from '@/ai/genkit';
 import {z} from 'genkit';
 
 /**
@@ -83,9 +83,6 @@ const moodAnalysisAndSupportFlow = ai.defineFlow(
   },
   async input => {
     const {output} = await moodAnalysisPrompt(input);
-    if (!output) {
-      throw new Error("Failed to generate support suggestions from AI.");
-    }
-    return output;
+    return requireOutput(output, "Failed to generate support suggestions from AI.");
   }
 );

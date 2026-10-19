@@ -11,6 +11,26 @@ import { getPregnancyWeeklyUpdate, type PregnancyWeeklyUpdateInput, type Pregnan
 
 const weeks = Array.from({ length: 42 }, (_, i) => i + 1); // Weeks 1 to 42
 
+const getBabySizeEmoji = (fruit: string | undefined): string => {
+  if (!fruit) return "👶";
+  const fruitLower = fruit.toLowerCase();
+  if (fruitLower.includes("blueberry")) return "🫐";
+  if (fruitLower.includes("grape")) return "🍇";
+  if (fruitLower.includes("lemon") || fruitLower.includes("lime")) return "🍋";
+  if (fruitLower.includes("avocado")) return "🥑";
+  if (fruitLower.includes("peach")) return "🍑";
+  if (fruitLower.includes("mango")) return "🥭";
+  if (fruitLower.includes("sweet potato")) return "🍠";
+  if (fruitLower.includes("bell pepper")) return "🫑";
+  if (fruitLower.includes("eggplant")) return "🍆";
+  if (fruitLower.includes("coconut")) return "🥥";
+  if (fruitLower.includes("lettuce")) return "🥬";
+  if (fruitLower.includes("pineapple")) return "🍍";
+  if (fruitLower.includes("cantaloupe") || fruitLower.includes("honeydew")) return "🍈";
+  if (fruitLower.includes("watermelon") || fruitLower.includes("pumpkin")) return "🍉";
+  return "👶";
+};
+
 export function PregnancyProgressDisplay() {
   const [selectedWeek, setSelectedWeek] = useState<number | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(false);
@@ -48,27 +68,6 @@ export function PregnancyProgressDisplay() {
       setIsLoading(false);
     }
   };
-  
-  const getBabySizeEmoji = (fruit: string | undefined): string => {
-    if (!fruit) return "👶";
-    const fruitLower = fruit.toLowerCase();
-    if (fruitLower.includes("blueberry")) return "🫐";
-    if (fruitLower.includes("grape")) return "🍇";
-    if (fruitLower.includes("lemon") || fruitLower.includes("lime")) return "🍋";
-    if (fruitLower.includes("avocado")) return "🥑";
-    if (fruitLower.includes("peach")) return "🍑";
-    if (fruitLower.includes("mango")) return "🥭";
-    if (fruitLower.includes("sweet potato")) return "🍠";
-    if (fruitLower.includes("bell pepper")) return "🫑";
-    if (fruitLower.includes("eggplant")) return "🍆";
-    if (fruitLower.includes("coconut")) return "🥥";
-    if (fruitLower.includes("lettuce")) return "🥬";
-    if (fruitLower.includes("pineapple")) return "🍍";
-    if (fruitLower.includes("cantaloupe") || fruitLower.includes("honeydew")) return "🍈";
-    if (fruitLower.includes("watermelon") || fruitLower.includes("pumpkin")) return "🍉";
-    return "👶";
-  };
-
 
   return (
     <div className="space-y-8">

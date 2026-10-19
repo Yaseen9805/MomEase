@@ -9,7 +9,7 @@
  * - SummarizeExpertContentOutput - The return type for the summarizeExpertContent function.
  */
 
-import {ai} from '@/ai/genkit';
+import {ai, requireOutput} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const SummarizeExpertContentInputSchema = z.object({
@@ -46,9 +46,6 @@ const summarizeExpertContentFlow = ai.defineFlow(
   },
   async input => {
     const {output} = await prompt(input);
-    if (!output) {
-      throw new Error("Failed to generate summary from AI.");
-    }
-    return output;
+    return requireOutput(output, "Failed to generate summary from AI.");
   }
 );
