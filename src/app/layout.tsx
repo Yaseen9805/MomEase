@@ -22,6 +22,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mom-ease-9805.vercel.app'),
   title: 'MomEase',
   description: 'Support for pregnant and postpartum women by MomEase',
 };

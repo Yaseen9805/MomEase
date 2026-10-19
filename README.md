@@ -38,18 +38,18 @@ flowchart TD
 
     subgraph NextApp["Next.js app (App Router)"]
         direction TB
-        Layout["MainLayout<br/>(splash screen -> sidebar nav + header)"]
+        Layout["MainLayout<br/>(sidebar nav + header)"]
         Pages["Pages<br/>(src/app/**)"]
         Components["Feature components<br/>(src/components/*)"]
         UI["ShadCN/Radix UI primitives<br/>(src/components/ui/*)"]
         Contexts["React Context<br/>(cart-context, theme-context)"]
-        Services["Local data services<br/>(services/blog.ts, educate.ts, exercise.ts)"]
-        Forms["React Hook Form + Zod<br/>(mood, forum, blog, educate forms)"]
+        Services["Local data services<br/>(services/educate.ts, exercise.ts)"]
+        Forms["React Hook Form + Zod<br/>(mood, forum, educate forms)"]
     end
 
     LocalStorage[("Browser localStorage<br/>(cart, theme, mood entries)")]
     Genkit["Genkit AI flows<br/>(src/ai/flows/*, server actions)"]
-    Gemini[("Google Gemini<br/>via @genkit-ai/googleai")]
+    Gemini[("Google Gemini<br/>via @genkit-ai/google-genai")]
 
     Browser --> Layout --> Pages --> Components --> UI
     Pages --> Contexts --> LocalStorage
@@ -65,13 +65,13 @@ Each AI feature (mood support suggestions, weekly pregnancy updates, expert blog
 
 - **Framework**: Next.js 15 (App Router, Turbopack in dev)
 - **Language**: TypeScript
-- **UI**: ShadCN UI components on top of Radix UI primitives, Tailwind CSS (with `tailwindcss-animate`), Lucide React icons, Geist font
-- **AI**: Genkit (`genkit`, `@genkit-ai/next`) with the Google AI plugin (`@genkit-ai/googleai`), model `gemini-2.0-flash`
+- **UI**: ShadCN UI components on top of Radix UI primitives, Tailwind CSS (with `tailwindcss-animate`), Lucide React icons, Inter + Poppins fonts (via `next/font/google`)
+- **AI**: Genkit (`genkit`) with the Google AI plugin (`@genkit-ai/google-genai`), model `gemini-3.8-flash`
 - **Forms & validation**: React Hook Form with `@hookform/resolvers`, Zod schemas
 - **Charts**: Recharts (mood trend visualization)
 - **Dates**: date-fns, `react-day-picker`
 - **State**: React Context for cross-cutting state (cart, theme); `localStorage` for client-side persistence
-- **Tooling**: ESLint, `patch-package`, `tsx`
+- **Tooling**: ESLint, `tsx`
 
 ## Prerequisites
 
@@ -102,7 +102,7 @@ npm run build           # production build
 npm start                # run the production build
 npm run genkit:dev      # start the Genkit dev UI to inspect/test AI flows directly
 npm run genkit:watch    # same, but restarts on file changes
-npm run lint             # next lint
+npm run lint             # eslint .
 npm run typecheck        # tsc --noEmit
 ```
 
@@ -124,7 +124,7 @@ This was a team project built by Team Coin Toss, with Mohammed Shahzad Anwar as 
 - Build out a full e-commerce backend for the shop instead of a demo checkout
 - Add real-time chat to the community forum
 - Add appointment reminders and personalized exercise or meal plans
-- Add automated tests and CI, and wire up the currently-unused `firebase`/`@tanstack/react-query` dependencies (or remove them) once a real backend exists
+- Add automated tests and CI
 
 ## Project Structure
 

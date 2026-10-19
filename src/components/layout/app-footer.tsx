@@ -7,7 +7,7 @@ export function AppFooter() {
   return (
     <footer className="bg-card/30 text-foreground/80 py-10 mt-12 rounded-lg shadow-md">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
           {/* Company Column */}
           <div>
             <h3 className="font-semibold text-foreground mb-4">Company</h3>
@@ -70,43 +70,6 @@ export function AppFooter() {
                 <Link href="#" className="hover:text-primary transition-colors">
                   Cookie Policy
                 </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Connect Column */}
-          <div>
-            <h3 className="font-semibold text-foreground mb-4">Connect</h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors"
-                >
-                  Twitter
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors"
-                >
-                  Facebook
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors"
-                >
-                  Instagram
-                </a>
               </li>
             </ul>
           </div>

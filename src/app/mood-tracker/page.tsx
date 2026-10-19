@@ -12,7 +12,6 @@ export default function MoodTrackerPage() {
 
   // Effect to run once on client mount for initialization
   useEffect(() => {
-    document.title = "Mood & Symptom Tracker | MomEase";
     setIsClient(true); // Signal that client-side logic can run
 
     // Load entries from localStorage
