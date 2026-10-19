@@ -134,14 +134,14 @@ MomEase/
 │   └── blueprint.md                       # Original app concept/design brief
 ├── src/
 │   ├── ai/
-│   │   ├── genkit.ts                      # Genkit client config (Google AI plugin, gemini-2.0-flash)
+│   │   ├── genkit.ts                      # Genkit client config (Google AI plugin, gemini-3.8-flash)
 │   │   ├── dev.ts                         # Genkit dev-server entry point, registers all flows
 │   │   └── flows/
 │   │       ├── mood-analysis-and-support.ts     # AI chatbot support suggestions from mood/symptoms
 │   │       ├── pregnancy-weekly-update.ts       # AI-generated weekly pregnancy update
 │   │       └── expert-blog-summary.ts           # AI summary of a blog/educate article
 │   ├── app/                               # Next.js App Router pages (one folder per route)
-│   │   ├── ai-companion/, ai-support/, mood-tracker/, exercises-wellbeing/,
+│   │   ├── ai-companion/, mood-tracker/, exercises-wellbeing/,
 │   │   │   educate/, growth/, community/, ambient-music/, professional-help/, shop/, ...
 │   │   └── layout.tsx, page.tsx, globals.css
 │   ├── components/
@@ -152,7 +152,7 @@ MomEase/
 │   │   ├── cart-context.tsx               # Shop cart state, persisted to localStorage
 │   │   └── theme-context.tsx              # Light/dark theme state, persisted to localStorage
 │   ├── services/
-│   │   ├── blog.ts, educate.ts, exercise.ts   # Sample content + accessor functions (stand-in for a real backend)
+│   │   ├── educate.ts, exercise.ts        # Sample content + accessor functions (stand-in for a real backend)
 │   ├── config/
 │   │   └── nav-links.ts                   # Sidebar navigation link definitions
 │   ├── hooks/                             # use-toast, use-mobile

@@ -8,14 +8,11 @@ import {
   SidebarHeader,
   SidebarContent,
   SidebarInset,
-  SidebarFooter, // Keep SidebarFooter import if it's used in ui/sidebar for structure
   SidebarTrigger,
 } from '@/components/ui/sidebar';
 import { SidebarNav } from './sidebar-nav';
 import { AppHeader } from './app-header';
 import { mainNavLinks } from '@/config/nav-links';
-import { Button } from '@/components/ui/button';
-import { LogOut } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
@@ -47,19 +44,6 @@ export function MainLayout({ children }: MainLayoutProps) {
         </SidebarHeader>
         <SidebarContent> {/* SidebarContent already has p-4 and flex flex-col, overflow-auto, flex-1 */}
           <SidebarNav links={mainNavLinks} />
-          <div className="mt-auto pt-4 border-t border-sidebar-border -mx-4 px-4"> {/* Pushes logout to bottom of scrollable content */}
-            <Button
-              variant="ghost"
-              className={cn(
-                "w-full justify-start gap-2 text-sidebar-foreground",
-                "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
-                "group-data-[state=collapsed]:w-auto group-data-[state=collapsed]:justify-center group-data-[state=collapsed]:p-2 group-data-[state=collapsed]:mx-auto" 
-              )}
-            >
-              <LogOut className="h-5 w-5 shrink-0" />
-              <span className="group-data-[state=collapsed]:hidden">Logout</span>
-            </Button>
-          </div>
         </SidebarContent>
         {/* SidebarFooter is defined in ui/sidebar.tsx and has mt-auto there */}
         {/* If you wanted a visual footer *always* at bottom, it would be here. */}

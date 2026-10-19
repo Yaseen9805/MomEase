@@ -3,7 +3,7 @@
 
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
-import { UserCircle, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useCart } from "@/context/cart-context";
 import { Badge } from "@/components/ui/badge";
@@ -36,10 +36,6 @@ export function AppHeader() {
             )}
             <span className="sr-only">Shopping Cart</span>
           </Link>
-        </Button>
-        <Button variant="ghost" size="icon" className="rounded-full">
-          <UserCircle className="h-6 w-6" />
-          <span className="sr-only">User Profile</span>
         </Button>
       </div>
     </header>
