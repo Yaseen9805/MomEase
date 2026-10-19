@@ -36,7 +36,7 @@ type CreateEducatePostFormValues = z.infer<typeof createEducatePostSchema>;
 interface CreateEducatePostFormProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onAddPost: (postData: Omit<EducatePost, 'id' | 'author' | 'publicationDate' | 'imageUrl'> & { title: string; content: string; category: EducateCategory; tags?: string; imageUrl?: string }) => void;
+  onAddPost: (postData: Omit<EducatePost, 'id' | 'author' | 'publicationDate' | 'tags' | 'imageUrl'> & { title: string; content: string; category: EducateCategory; tags?: string; imageUrl?: string }) => void;
 }
 
 export function CreateEducatePostForm({ open, onOpenChange, onAddPost }: CreateEducatePostFormProps) {

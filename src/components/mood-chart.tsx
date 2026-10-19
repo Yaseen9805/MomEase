@@ -5,6 +5,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { format, startOfDay, endOfDay, getHours } from 'date-fns';
 import { Calendar as CalendarIcon, LineChart as LineChartIcon } from 'lucide-react';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
+import type { NameType, Payload, ValueType } from 'recharts/types/component/DefaultTooltipContent';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -191,12 +192,12 @@ export function MoodChart({ entries }: MoodChartProps) {
                         </div>
                        )
                     }}
-                    formatter={(value: number | string | Array<number | string>, name: string, item: { payload: MoodChartDataPoint }) => {
-                      const dataPoint = item.payload;
+                    formatter={(value: ValueType, name: NameType, item: Payload<ValueType, NameType>) => {
+                      const dataPoint = item.payload as MoodChartDataPoint | undefined;
                       const moodLabel = Object.keys(moodValueMapping).find(key => moodValueMapping[key as Mood] === Number(value));
                       const emoji = moodLabel ? moodEmojiMapping[moodLabel as Mood] : '';
-                      
-                      if (dataPoint.moodCount === 0) {
+
+                      if (!dataPoint || dataPoint.moodCount === 0) {
                         return (
                           <div className="flex flex-col gap-0.5">
                              <span className="text-muted-foreground">No entries</span>

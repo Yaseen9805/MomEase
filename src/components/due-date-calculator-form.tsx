@@ -18,17 +18,26 @@ import { useToast } from "@/hooks/use-toast";
 
 const calculationMethods = ["lmp", "conceptionDate"] as const;
 
-const lmpSchema = z.object({
-  calculationMethod: z.literal(calculationMethods[0]),
-  lmpDate: z.date({ required_error: "Please select your Last Menstrual Period date." }),
+const dueDateSchema = z.object({
+  calculationMethod: z.enum(calculationMethods),
+  lmpDate: z.date().optional(),
+  conceptionDate: z.date().optional(),
+}).superRefine((data, ctx) => {
+  if (data.calculationMethod === "lmp" && !data.lmpDate) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "Please select your Last Menstrual Period date.",
+      path: ["lmpDate"],
+    });
+  }
+  if (data.calculationMethod === "conceptionDate" && !data.conceptionDate) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "Please select your estimated conception date.",
+      path: ["conceptionDate"],
+    });
+  }
 });
-
-const conceptionDateSchema = z.object({
-  calculationMethod: z.literal(calculationMethods[1]),
-  conceptionDate: z.date({ required_error: "Please select your estimated conception date." }),
-});
-
-const dueDateSchema = z.discriminatedUnion("calculationMethod", [lmpSchema, conceptionDateSchema]);
 
 type DueDateFormValues = z.infer<typeof dueDateSchema>;
 
@@ -46,12 +55,14 @@ export function DueDateCalculatorForm() {
 
   const onSubmit: SubmitHandler<DueDateFormValues> = (data) => {
     let dueDate: Date;
-    if (data.calculationMethod === "lmp") {
+    if (data.calculationMethod === "lmp" && data.lmpDate) {
       // Naegele's rule: LMP date + 280 days (or LMP - 3 months + 7 days + 1 year)
       dueDate = addDays(data.lmpDate, 280);
-    } else {
+    } else if (data.calculationMethod === "conceptionDate" && data.conceptionDate) {
       // Conception date + 266 days
       dueDate = addDays(data.conceptionDate, 266);
+    } else {
+      return;
     }
 
     if (isValid(dueDate)) {

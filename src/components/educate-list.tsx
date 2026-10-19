@@ -66,7 +66,7 @@ export function EducateList() {
     setIsLoading(false);
   }, []);
 
-  const handleAddPost = (newPostData: Omit<EducatePost, 'id' | 'author' | 'publicationDate' | 'imageUrl'> & { title: string; content: string; category: EducateCategory; tags?: string; imageUrl?: string }) => {
+  const handleAddPost = (newPostData: Omit<EducatePost, 'id' | 'author' | 'publicationDate' | 'tags' | 'imageUrl'> & { title: string; content: string; category: EducateCategory; tags?: string; imageUrl?: string }) => {
     const newPost: EducatePost = {
       id: crypto.randomUUID(),
       title: newPostData.title,
