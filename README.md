@@ -1,5 +1,6 @@
 # MomEase
 
+[![CI](https://github.com/Yaseen9805/MomEase/actions/workflows/ci.yml/badge.svg)](https://github.com/Yaseen9805/MomEase/actions/workflows/ci.yml)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=nextdotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
