@@ -80,6 +80,9 @@ const moodAnalysisAndSupportFlow = ai.defineFlow(
   },
   async input => {
     const {output} = await moodAnalysisPrompt(input);
-    return output!;
+    if (!output) {
+      throw new Error("Failed to generate support suggestions from AI.");
+    }
+    return output;
   }
 );
