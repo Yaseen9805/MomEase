@@ -184,7 +184,7 @@ export function MoodChart({ entries }: MoodChartProps) {
                 cursor={false}
                 content={
                   <ChartTooltipContent
-                    labelFormatter={(label: string, payload?: Array<any>) => {
+                    labelFormatter={(label: string, payload?: Array<Payload<ValueType, NameType>>) => {
                        const dataPoint = payload?.[0]?.payload as MoodChartDataPoint | undefined;
                        return (
                         <div className="font-medium">

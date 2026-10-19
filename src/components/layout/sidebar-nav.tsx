@@ -18,11 +18,6 @@ import type { buttonVariants } from "@/components/ui/button"; // Assuming sideba
 import { Slot } from "@radix-ui/react-slot";
 import * as React from "react";
 
-// Assuming sidebarMenuButtonVariants is defined in ui/sidebar.tsx or similar
-// For this example, I'll assume a simplified variant definition if not directly available
-// from ui/button. Ideally, this comes from where SidebarMenuButtonPrimitive gets its variants.
-const sidebarMenuButtonVariants = ({ variant, size, className }: any) => cn("base-styles", className); // Placeholder
-
 interface SidebarMenuButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> { // Or your specific sidebar button variants

@@ -36,9 +36,9 @@ export default function MentalWellbeingPage() {
             </CardHeader>
             <CardContent>
               <p className="text-foreground/80">
-                Postpartum Depression is more than just the "baby blues." It involves intense feelings of sadness, anxiety, and exhaustion that can interfere with daily care activities for yourself and your baby. Symptoms can appear days or even months after delivery.
+                Postpartum Depression is more than just the &quot;baby blues.&quot; It involves intense feelings of sadness, anxiety, and exhaustion that can interfere with daily care activities for yourself and your baby. Symptoms can appear days or even months after delivery.
               </p>
-              <p className="mt-2 text-sm text-primary font-semibold">Key takeaway: It's a medical condition, not a sign of weakness. Treatment is available and effective.</p>
+              <p className="mt-2 text-sm text-primary font-semibold">Key takeaway: It&apos;s a medical condition, not a sign of weakness. Treatment is available and effective.</p>
             </CardContent>
           </Card>
           <Card className="shadow-lg hover:shadow-xl transition-shadow">
@@ -47,7 +47,7 @@ export default function MentalWellbeingPage() {
             </CardHeader>
             <CardContent>
               <p className="text-foreground/80">
-                It's common to worry as a new parent, but postpartum anxiety involves excessive worry, fear, and panic attacks that can be overwhelming. You might constantly feel on edge or have racing thoughts.
+                It&apos;s common to worry as a new parent, but postpartum anxiety involves excessive worry, fear, and panic attacks that can be overwhelming. You might constantly feel on edge or have racing thoughts.
               </p>
                <p className="mt-2 text-sm text-primary font-semibold">Key takeaway: Recognize the signs and seek support. Coping strategies and therapy can help significantly.</p>
             </CardContent>
@@ -60,7 +60,7 @@ export default function MentalWellbeingPage() {
               <p className="text-foreground/80">
                 The demands of a new baby, hormonal changes, and sleep deprivation can lead to significant stress. Learning to identify stressors and implement coping mechanisms is crucial for your well-being.
               </p>
-              <p className="mt-2 text-sm text-primary font-semibold">Key takeaway: Prioritize small acts of self-care and don't hesitate to ask for help from your support network.</p>
+              <p className="mt-2 text-sm text-primary font-semibold">Key takeaway: Prioritize small acts of self-care and don&apos;t hesitate to ask for help from your support network.</p>
             </CardContent>
           </Card>
         </div>
@@ -86,7 +86,7 @@ export default function MentalWellbeingPage() {
                 <li>I am doing my best, and my best is enough.</li>
                 <li>I trust my instincts.</li>
                 <li>I embrace this new chapter with love and patience.</li>
-                <li>It's okay to ask for help.</li>
+                <li>It&apos;s okay to ask for help.</li>
                 <li>I am learning and growing every day.</li>
                 <li>I deserve rest and self-care.</li>
               </ul>
@@ -101,7 +101,7 @@ export default function MentalWellbeingPage() {
                 <li>Listen to a favorite song or podcast.</li>
                 <li>Stretch your body gently for a few minutes.</li>
                 <li>Step outside for fresh air, even if just for 5 minutes.</li>
-                <li>Write down three things you're grateful for.</li>
+                <li>Write down three things you&apos;re grateful for.</li>
                 <li>Connect with a friend or loved one for a brief chat.</li>
                 <li>Read a page or two of a book.</li>
               </ul>
@@ -114,11 +114,11 @@ export default function MentalWellbeingPage() {
         <h2 className="text-3xl font-semibold mb-6 text-center">Understanding Your Emotional Journey: Psychological Facts</h2>
         <Card className="max-w-3xl mx-auto">
           <CardContent className="pt-6 space-y-3 text-foreground/80">
-            <p><Lightbulb className="inline-block mr-2 text-primary h-5 w-5" /><strong>Hormonal Shifts:</strong> After childbirth, estrogen and progesterone levels drop dramatically, which can contribute to mood swings and "baby blues." These usually resolve within a few weeks, but if they persist or worsen, it could be PPD.</p>
-            <p><Lightbulb className="inline-block mr-2 text-primary h-5 w-5" /><strong>Identity Transformation:</strong> Becoming a mother is a profound identity shift. It's normal to grieve parts of your old life while embracing your new role. Allow yourself time to adjust.</p>
-            <p><Lightbulb className="inline-block mr-2 text-primary h-5 w-5" /><strong>Brain Changes:</strong> Research shows that a mother's brain undergoes significant changes during pregnancy and postpartum, enhancing areas related to empathy, anxiety, and social interaction to help bond with and protect the baby.</p>
+            <p><Lightbulb className="inline-block mr-2 text-primary h-5 w-5" /><strong>Hormonal Shifts:</strong> After childbirth, estrogen and progesterone levels drop dramatically, which can contribute to mood swings and &quot;baby blues.&quot; These usually resolve within a few weeks, but if they persist or worsen, it could be PPD.</p>
+            <p><Lightbulb className="inline-block mr-2 text-primary h-5 w-5" /><strong>Identity Transformation:</strong> Becoming a mother is a profound identity shift. It&apos;s normal to grieve parts of your old life while embracing your new role. Allow yourself time to adjust.</p>
+            <p><Lightbulb className="inline-block mr-2 text-primary h-5 w-5" /><strong>Brain Changes:</strong> Research shows that a mother&apos;s brain undergoes significant changes during pregnancy and postpartum, enhancing areas related to empathy, anxiety, and social interaction to help bond with and protect the baby.</p>
             <p><Lightbulb className="inline-block mr-2 text-primary h-5 w-5" /><strong>Increased Vulnerability:</strong> The postpartum period can make you more vulnerable to mental health challenges, especially if you have a history of depression or anxiety, or lack social support.</p>
-            <p><Lightbulb className="inline-block mr-2 text-primary h-5 w-5" /><strong>"Mom Guilt" is Common:</strong> Many new mothers experience guilt about their choices or feelings. Remember that perfect parenting doesn't exist, and self-compassion is key.</p>
+            <p><Lightbulb className="inline-block mr-2 text-primary h-5 w-5" /><strong>&quot;Mom Guilt&quot; is Common:</strong> Many new mothers experience guilt about their choices or feelings. Remember that perfect parenting doesn&apos;t exist, and self-compassion is key.</p>
           </CardContent>
         </Card>
       </section>
@@ -149,7 +149,7 @@ export default function MentalWellbeingPage() {
             <AccordionContent className="space-y-3 text-foreground/90">
               <p><strong>Identify your triggers:</strong> What situations or thoughts cause you the most stress?</p>
               <p><strong>Practice mindfulness:</strong> Even a few minutes of focusing on your breath can reduce stress.</p>
-              <p><strong>Set realistic expectations:</strong> You don't have to do it all. Prioritize and let some things go.</p>
+              <p><strong>Set realistic expectations:</strong> You don&apos;t have to do it all. Prioritize and let some things go.</p>
               <p><strong>Stay connected:</strong> Talk to your partner, friends, or other new moms. Support groups can be very helpful.</p>
               <p><strong>Engage in hobbies:</strong> If possible, make time for activities you enjoy, even for short periods.</p>
             </AccordionContent>
@@ -162,7 +162,7 @@ export default function MentalWellbeingPage() {
             </AccordionTrigger>
             <AccordionContent className="space-y-3 text-foreground/90">
               <p><strong>Communicate openly:</strong> Talk with your partner about your feelings, needs, and expectations. Listen to theirs too.</p>
-              <p><strong>Make time for each other:</strong> Even short, focused moments of connection can make a difference. Schedule "date moments" if not full dates.</p>
+              <p><strong>Make time for each other:</strong> Even short, focused moments of connection can make a difference. Schedule &quot;date moments&quot; if not full dates.</p>
               <p><strong>Share responsibilities:</strong> Work as a team in caring for the baby and managing household tasks.</p>
               <p><strong>Be patient:</strong> Adjusting to new roles takes time. Show empathy and understanding for each other.</p>
               <p><strong>Seek counseling if needed:</strong> A therapist can help navigate relationship challenges during this transition.</p>

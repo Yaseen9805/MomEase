@@ -15,7 +15,7 @@ export default function GrowthHubPage() {
     <div className="container mx-auto py-8">
       <h1 className="text-4xl font-bold mb-10 text-center">Growth & Timeline</h1>
       <p className="text-lg text-foreground/80 mb-12 text-center max-w-2xl mx-auto">
-        Monitor your pregnancy journey, estimate your due date, and follow your baby's weekly development.
+        Monitor your pregnancy journey, estimate your due date, and follow your baby&apos;s weekly development.
       </p>
       <div className="grid md:grid-cols-2 gap-8">
         <Card className="hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out transform flex flex-col shadow-md">
@@ -24,7 +24,7 @@ export default function GrowthHubPage() {
               <CalendarCheck2 className="h-7 w-7 text-primary" />
               Due Date Calculator
             </CardTitle>
-            <CardDescription>Estimate your baby's expected due date.</CardDescription>
+            <CardDescription>Estimate your baby&apos;s expected due date.</CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center justify-center p-6 flex-grow">
             <CalendarCheck2 className="h-16 w-16 text-primary mb-4" />
@@ -45,12 +45,12 @@ export default function GrowthHubPage() {
               <Baby className="h-7 w-7 text-primary" />
               Weekly Pregnancy Progress
             </CardTitle>
-            <CardDescription>Track baby's development and your body's changes.</CardDescription>
+            <CardDescription>Track baby&apos;s development and your body&apos;s changes.</CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center justify-center p-6 flex-grow">
             <Baby className="h-16 w-16 text-primary mb-4" />
             <p className="mt-4 text-foreground/80 text-center">
-              Follow your baby's week-by-week growth and the transformations your body is undergoing.
+              Follow your baby&apos;s week-by-week growth and the transformations your body is undergoing.
             </p>
           </CardContent>
           <CardFooter>

@@ -56,7 +56,7 @@ const getForumPostsFromStorage = (): ForumPost[] => {
     const storedPosts = localStorage.getItem("forumPosts");
     if (storedPosts) {
       try {
-        return JSON.parse(storedPosts).map((post: any) => ({
+        return JSON.parse(storedPosts).map((post: Omit<ForumPost, 'timestamp'> & { timestamp: string }) => ({
           ...post,
           timestamp: new Date(post.timestamp), // Ensure date object
         }));

@@ -124,7 +124,7 @@ export function PregnancyProgressDisplay() {
         <div className="grid md:grid-cols-2 gap-6 mt-8">
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2"><Baby className="h-6 w-6 text-primary" /> Baby's Development</CardTitle>
+              <CardTitle className="flex items-center gap-2"><Baby className="h-6 w-6 text-primary" /> Baby&apos;s Development</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-foreground/80 whitespace-pre-line">{progressData.babyDevelopment}</p>
@@ -149,7 +149,7 @@ export function PregnancyProgressDisplay() {
 
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2"><Activity className="h-6 w-6 text-primary"/> Mother's Changes</CardTitle>
+              <CardTitle className="flex items-center gap-2"><Activity className="h-6 w-6 text-primary"/> Mother&apos;s Changes</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-foreground/80 whitespace-pre-line">{progressData.motherChanges}</p>

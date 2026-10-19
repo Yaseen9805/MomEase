@@ -14,7 +14,7 @@ export default function MentalWellnessPageRedirect() {
     <div className="container mx-auto py-8 text-center">
       <h1 className="text-3xl font-bold mb-4">Content Moved</h1>
       <p className="text-lg mb-6">
-        The Mental Wellness Hub content has been integrated into our new "Exercises & Well-being" section.
+        The Mental Wellness Hub content has been integrated into our new &quot;Exercises & Well-being&quot; section.
       </p>
       <Link href="/exercises-wellbeing/mental" className="text-primary hover:underline font-semibold">
         Go to Mental Well-being

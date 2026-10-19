@@ -91,7 +91,7 @@ export default function DashboardPage() {
           <CardContent className="flex flex-col items-center justify-center p-6 flex-grow">
             <TrendingUp className="h-16 w-16 text-primary mb-4" />
             <p className="text-sm text-center text-foreground/80">
-              Estimate your due date and track your baby's weekly development.
+              Estimate your due date and track your baby&apos;s weekly development.
             </p>
           </CardContent>
           <CardFooter>

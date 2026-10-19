@@ -19,7 +19,7 @@ export default function MoodTrackerPage() {
     const storedEntriesJSON = localStorage.getItem("moodEntries");
     if (storedEntriesJSON) {
       try {
-        const parsedEntries = JSON.parse(storedEntriesJSON).map((entry: any) => ({
+        const parsedEntries = JSON.parse(storedEntriesJSON).map((entry: Omit<MoodEntry, 'timestamp'> & { timestamp: string }) => ({
           ...entry,
           timestamp: new Date(entry.timestamp) // Ensure timestamp is a Date object
         }));

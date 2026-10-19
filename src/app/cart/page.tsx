@@ -36,7 +36,7 @@ export default function CartPage() {
         <ShoppingCart className="h-24 w-24 mx-auto text-primary" />
         <h1 className="text-3xl font-bold">Your Cart is Empty</h1>
         <p className="text-foreground/80">
-          Looks like you haven't added anything to your cart yet.
+          Looks like you haven&apos;t added anything to your cart yet.
         </p>
         <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
           <Link href="/shop">Start Shopping</Link>
