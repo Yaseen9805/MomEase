@@ -14,9 +14,9 @@ import {z} from 'genkit';
 
 const SummarizeExpertContentInputSchema = z.object({
   expertContent: z.object({ // Renamed from blogPost
-    title: z.string(),
-    content: z.string(),
-    author: z.string(),
+    title: z.string().max(300),
+    content: z.string().max(20000),
+    author: z.string().max(300),
     publicationDate: z.string().describe("The publication date of the content, as an ISO string."),
   }).describe('The expert content to summarize.'),
 });

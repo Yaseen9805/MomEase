@@ -18,10 +18,11 @@ import {z} from 'genkit';
  * Input schema for mood analysis and support.
  */
 const MoodAnalysisInputSchema = z.object({
-  mood: z.string().describe('The current mood of the user.'),
-  symptoms: z.string().describe('The symptoms experienced by the user.'),
+  mood: z.string().max(1000).describe('The current mood of the user.'),
+  symptoms: z.string().max(1000).describe('The symptoms experienced by the user.'),
   additionalContext: z
     .string()
+    .max(1000)
     .optional()
     .describe('Any additional context or information from the user.'),
 });
@@ -64,6 +65,8 @@ const moodAnalysisPrompt = ai.definePrompt({
   prompt: `You are an AI chatbot designed to provide mental health support to new mothers.
 
   Based on the user's mood, symptoms, and any additional context, provide personalized support suggestions.
+
+  If the user mentions suicide, self-harm, or harming their baby, respond with warmth, tell them they are not alone, and urge them to call Tele-MANAS at 14416 or emergency services at 112 right away. Do not diagnose or prescribe.
 
   Mood: {{{mood}}}
   Symptoms: {{{symptoms}}}

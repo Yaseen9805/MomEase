@@ -15,6 +15,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 import type { Mood, MoodEntry } from "@/types/mood";
 import { moodOptionsList } from "@/types/mood";
+import { containsCrisisLanguage } from "@/lib/crisis";
+import { CrisisBanner, CrisisDisclaimer } from "@/components/crisis-support";
 
 const moodTrackerSchema = z.object({
   mood: z.enum(moodOptionsList, { required_error: "Please select your current mood." }),
@@ -31,6 +33,7 @@ interface MoodTrackerFormProps {
 export function MoodTrackerForm({ onNewMoodEntry }: MoodTrackerFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [supportSuggestions, setSupportSuggestions] = useState<string | null>(null);
+  const [showCrisisBanner, setShowCrisisBanner] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<MoodTrackerFormValues>({
@@ -45,6 +48,11 @@ export function MoodTrackerForm({ onNewMoodEntry }: MoodTrackerFormProps) {
   const onSubmit: SubmitHandler<MoodTrackerFormValues> = async (data) => {
     setIsLoading(true);
     setSupportSuggestions(null);
+
+    const combinedText = `${data.symptoms} ${data.additionalContext ?? ""}`;
+    if (containsCrisisLanguage(combinedText)) {
+      setShowCrisisBanner(true);
+    }
 
     onNewMoodEntry({
       mood: data.mood,
@@ -85,6 +93,7 @@ export function MoodTrackerForm({ onNewMoodEntry }: MoodTrackerFormProps) {
       </CardHeader>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <CardContent className="space-y-6">
+          {showCrisisBanner && <CrisisBanner />}
           <div className="space-y-2">
             <Label htmlFor="mood">Current Mood</Label>
             <Controller
@@ -151,6 +160,10 @@ export function MoodTrackerForm({ onNewMoodEntry }: MoodTrackerFormProps) {
           </div>
         </CardContent>
       )}
+
+      <CardFooter className="border-t pt-4">
+        <CrisisDisclaimer />
+      </CardFooter>
     </Card>
   );
 }

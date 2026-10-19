@@ -8,7 +8,9 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { analyzeMoodAndProvideSupport, type MoodAnalysisInput, type MoodAnalysisOutput } from "@/ai/flows/mood-analysis-and-support";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Loader2, User, Bot } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { containsCrisisLanguage } from "@/lib/crisis";
+import { CrisisBanner, CrisisDisclaimer } from "@/components/crisis-support";
 
 interface Message {
   id: string;
@@ -21,6 +23,7 @@ export function AiSupportChat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showCrisisBanner, setShowCrisisBanner] = useState(false);
   const { toast } = useToast();
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
@@ -68,6 +71,10 @@ export function AiSupportChat() {
     setInputMessage("");
     setIsLoading(true);
 
+    if (containsCrisisLanguage(userMessage.text)) {
+      setShowCrisisBanner(true);
+    }
+
     try {
       const moodInput: MoodAnalysisInput = {
         mood: "User input",
@@ -112,6 +119,11 @@ export function AiSupportChat() {
         </CardTitle>
         <CardDescription>Your AI friend for mental wellness. Chat about your feelings and get support.</CardDescription>
       </CardHeader>
+      {showCrisisBanner && (
+        <div className="p-4 pb-0">
+          <CrisisBanner />
+        </div>
+      )}
       <CardContent className="flex-1 p-0">
         <ScrollArea className="h-full p-4" ref={scrollAreaRef}>
           <div className="space-y-6">
@@ -174,6 +186,9 @@ export function AiSupportChat() {
           </Button>
         </div>
       </form>
+      <CardFooter className="border-t pt-4">
+        <CrisisDisclaimer />
+      </CardFooter>
     </Card>
   );
 }
