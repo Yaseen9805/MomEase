@@ -8,7 +8,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Loader2, Lightbulb, Baby, Sparkles, Bone, Activity } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { getPregnancyWeeklyUpdate, type PregnancyWeeklyUpdateInput, type PregnancyWeeklyUpdateOutput } from "@/ai/flows/pregnancy-weekly-update";
-import Image from "next/image";
 
 const weeks = Array.from({ length: 42 }, (_, i) => i + 1); // Weeks 1 to 42
 
@@ -50,35 +49,24 @@ export function PregnancyProgressDisplay() {
     }
   };
   
-  const getBabySizeImage = (fruit: string | undefined): string => {
-    if (!fruit) return "https://picsum.photos/seed/babydefault/200/200";
-    // Simple mapping for demonstration, can be expanded or made more dynamic
+  const getBabySizeEmoji = (fruit: string | undefined): string => {
+    if (!fruit) return "👶";
     const fruitLower = fruit.toLowerCase();
-    if (fruitLower.includes("poppy seed")) return "https://picsum.photos/seed/poppyseed/200/200";
-    if (fruitLower.includes("apple seed")) return "https://picsum.photos/seed/appleseed/200/200";
-    if (fruitLower.includes("lentil")) return "https://picsum.photos/seed/lentil/200/200";
-    if (fruitLower.includes("blueberry")) return "https://picsum.photos/seed/blueberry/200/200";
-    if (fruitLower.includes("raspberry")) return "https://picsum.photos/seed/raspberry/200/200";
-    if (fruitLower.includes("grape")) return "https://picsum.photos/seed/grape/200/200";
-    if (fruitLower.includes("lime")) return "https://picsum.photos/seed/lime/200/200";
-    if (fruitLower.includes("plum")) return "https://picsum.photos/seed/plum/200/200";
-    if (fruitLower.includes("peach")) return "https://picsum.photos/seed/peach/200/200";
-    if (fruitLower.includes("lemon")) return "https://picsum.photos/seed/lemonbaby/200/200";
-    if (fruitLower.includes("avocado")) return "https://picsum.photos/seed/avocadobaby/200/200";
-    if (fruitLower.includes("orange")) return "https://picsum.photos/seed/orangebaby/200/200";
-    if (fruitLower.includes("mango")) return "https://picsum.photos/seed/mangobaby/200/200";
-    if (fruitLower.includes("sweet potato")) return "https://picsum.photos/seed/sweetpotato/200/200";
-    if (fruitLower.includes("bell pepper")) return "https://picsum.photos/seed/bellpepper/200/200";
-    if (fruitLower.includes("pomegranate")) return "https://picsum.photos/seed/pomegranate/200/200";
-    if (fruitLower.includes("artichoke")) return "https://picsum.photos/seed/artichoke/200/200";
-    if (fruitLower.includes("eggplant")) return "https://picsum.photos/seed/eggplant/200/200";
-    if (fruitLower.includes("coconut")) return "https://picsum.photos/seed/coconut/200/200";
-    if (fruitLower.includes("head of lettuce")) return "https://picsum.photos/seed/lettuce/200/200";
-    if (fruitLower.includes("pineapple")) return "https://picsum.photos/seed/pineapple/200/200";
-    if (fruitLower.includes("cantaloupe")) return "https://picsum.photos/seed/cantaloupe/200/200";
-    if (fruitLower.includes("honeydew")) return "https://picsum.photos/seed/honeydew/200/200";
-    if (fruitLower.includes("watermelon") || fruitLower.includes("pumpkin")) return "https://picsum.photos/seed/watermelon/200/200";
-    return `https://picsum.photos/seed/${fruitLower.replace(/\s+/g, '')}/200/200`;
+    if (fruitLower.includes("blueberry")) return "🫐";
+    if (fruitLower.includes("grape")) return "🍇";
+    if (fruitLower.includes("lemon") || fruitLower.includes("lime")) return "🍋";
+    if (fruitLower.includes("avocado")) return "🥑";
+    if (fruitLower.includes("peach")) return "🍑";
+    if (fruitLower.includes("mango")) return "🥭";
+    if (fruitLower.includes("sweet potato")) return "🍠";
+    if (fruitLower.includes("bell pepper")) return "🫑";
+    if (fruitLower.includes("eggplant")) return "🍆";
+    if (fruitLower.includes("coconut")) return "🥥";
+    if (fruitLower.includes("lettuce")) return "🥬";
+    if (fruitLower.includes("pineapple")) return "🍍";
+    if (fruitLower.includes("cantaloupe") || fruitLower.includes("honeydew")) return "🍈";
+    if (fruitLower.includes("watermelon") || fruitLower.includes("pumpkin")) return "🍉";
+    return "👶";
   };
 
 
@@ -130,14 +118,9 @@ export function PregnancyProgressDisplay() {
               <p className="text-foreground/80 whitespace-pre-line">{progressData.babyDevelopment}</p>
               {progressData.babySizeFruit && (
                 <div className="mt-4 p-4 bg-primary/10 rounded-lg flex items-center gap-4">
-                  <Image 
-                    src={getBabySizeImage(progressData.babySizeFruit)} 
-                    alt={progressData.babySizeFruit} 
-                    width={60} 
-                    height={60} 
-                    className="rounded-full object-cover"
-                    data-ai-hint="fruit vegetable"
-                  />
+                  <span className="text-5xl" role="img" aria-label={progressData.babySizeFruit}>
+                    {getBabySizeEmoji(progressData.babySizeFruit)}
+                  </span>
                   <div>
                     <p className="font-semibold text-primary">Baby is about the size of...</p>
                     <p className="text-lg text-foreground">{progressData.babySizeFruit}</p>
