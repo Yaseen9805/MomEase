@@ -2,7 +2,6 @@
 "use client"; // Required for useState and useEffect
 
 import type { ReactNode } from 'react';
-import { useState, useEffect } from 'react';
 import {
   SidebarProvider,
   Sidebar,
@@ -19,29 +18,14 @@ import { Button } from '@/components/ui/button';
 import { LogOut } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { SplashScreen } from '../splash-screen'; // Import SplashScreen
 
 interface MainLayoutProps {
   children: ReactNode;
 }
 
 export function MainLayout({ children }: MainLayoutProps) {
-  const [showSplash, setShowSplash] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSplash(false);
-    }, 2500); // Display splash for 2.5 seconds
-
-    return () => clearTimeout(timer); // Cleanup timer
-  }, []);
-
-  if (showSplash) {
-    return <SplashScreen />;
-  }
-
   return (
-    <SidebarProvider defaultOpen={true} collapsible="icon">
+    <SidebarProvider defaultOpen={true}>
       <Sidebar
         variant="sidebar"
         collapsible="icon"
