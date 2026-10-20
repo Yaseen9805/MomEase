@@ -4,6 +4,7 @@
 import type { Product, CartItem } from "@/types/shop";
 import React, { createContext, useContext, useState, useEffect, type ReactNode } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { productImages, type ProductId } from "@/config/product-images";
 
 interface CartContextType {
   cartItems: CartItem[];
@@ -36,7 +37,13 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   useEffect(() => {
     const storedCartItems = localStorage.getItem("cartItems");
     if (storedCartItems) {
-      setCartItems(JSON.parse(storedCartItems));
+      const items: CartItem[] = JSON.parse(storedCartItems);
+      setCartItems(
+        items.map((item) => ({
+          ...item,
+          imageUrl: productImages[item.id as ProductId] ?? item.imageUrl,
+        }))
+      );
     }
   }, []);
 

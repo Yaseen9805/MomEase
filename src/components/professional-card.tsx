@@ -1,5 +1,4 @@
 
-import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import type { LucideProps } from 'lucide-react';
@@ -9,23 +8,29 @@ interface ProfessionalCardProps {
   name: string;
   specialty: string;
   description: string;
-  imageUrl: string;
-  aiHint: string;
   Icon: React.FC<LucideProps>;
   phoneNumber?: string;
 }
 
-export function ProfessionalCard({ name, specialty, description, imageUrl, aiHint, Icon, phoneNumber }: ProfessionalCardProps) {
+function getInitials(name: string): string {
+  return name
+    .replace(/^Dr\.?\s+/i, "")
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
+}
+
+export function ProfessionalCard({ name, specialty, description, Icon, phoneNumber }: ProfessionalCardProps) {
   return (
     <Card className="shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out transform flex flex-col sm:flex-row items-center sm:items-start gap-6 p-6">
-      <Image
-        src={imageUrl}
-        alt={name}
-        width={120}
-        height={120}
-        className="rounded-full object-cover object-center w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 border-2 border-primary"
-        data-ai-hint={aiHint}
-      />
+      <div
+        aria-hidden="true"
+        className="flex h-24 w-24 sm:h-32 sm:w-32 flex-shrink-0 items-center justify-center rounded-full border-2 border-primary bg-primary/10 text-3xl font-semibold text-primary"
+      >
+        {getInitials(name)}
+      </div>
       <div className="flex-grow text-center sm:text-left">
         <CardHeader className="p-0 mb-2">
           <CardTitle className="text-2xl flex items-center justify-center sm:justify-start gap-2">
